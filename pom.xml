@@ -1,25 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Library coordinates -->
     <groupId>ma.emsi.security</groupId>
     <artifactId>emsi-security-utils</artifactId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
 
+    <name>EMSI Security Utils</name>
+    <description>Reusable Spring Security utility library for userId and roles</description>
+
+    <!-- Java compiler -->
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <!-- Dependencies -->
     <dependencies>
+        <!-- Spring Security Core -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
             <version>6.5.7</version>
         </dependency>
+
+        <!-- HttpServletRequest -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -27,5 +39,33 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <!-- GitHub Packages deployment (public repo) -->
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/abdelmoughith/emsi-security-utils</url>
+        </repository>
+    </distributionManagement>
+
+    <!-- Optional build settings -->
+    <build>
+        <plugins>
+            <!-- Maven Jar Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
